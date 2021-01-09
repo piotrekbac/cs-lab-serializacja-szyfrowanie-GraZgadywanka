@@ -70,5 +70,6 @@ Podpowiedź: wielowątkowość.
 4. [WCF: Serialization and Deserialization](https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/serialization-and-deserialization)
 5. [Serialization guidelines](https://docs.microsoft.com/en-us/dotnet/standard/serialization/serialization-guidelines)
 6. [.NET Serializers Comparison Chart](https://manski.net/2014/10/net-serializers-comparison-chart/)
-7. [Cryptographic Services](https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services)
-8. [How to: Encrypt XML Elements with Symmetric Keys](https://docs.microsoft.com/pl-pl/dotnet/standard/security/how-to-encrypt-xml-elements-with-symmetric-keys)
+7. [XML serialization in depth](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization)
+8. [Cryptographic Services](https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services)
+9. [How to: Encrypt XML Elements with Symmetric Keys](https://docs.microsoft.com/pl-pl/dotnet/standard/security/how-to-encrypt-xml-elements-with-symmetric-keys)
