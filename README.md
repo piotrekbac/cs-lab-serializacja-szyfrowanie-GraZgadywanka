@@ -13,6 +13,8 @@ Po wykonaniu ćwiczenia powinieneś:
 * umieć przeprowadzić serializację i deserializację _via_ `DataContract` obiektu i kolekcji obiektów do XML
 * umieć zaszyfrować i odszyfrować informacje.
 
+⚠️ ZASTRZEŻENIE: serializacja binarna jest aktualnie **silnie niezalecana** ze względów bezpieczeństwa kodu ([BinaryFormatter security guide](https://docs.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide)). W ramach niniejszego ćwiczenia wykonywana jest wyłącznie w celach edukacyjnych.
+
 ---
 
 ## Problem
