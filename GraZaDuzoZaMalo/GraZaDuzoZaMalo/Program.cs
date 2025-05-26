@@ -9,14 +9,16 @@ namespace GraZaDuzoZaMalo
 {
     class Program
     {
-        //Definiujemy globalną zmienna przechowująca stan gry
+        //Definiujemy globalną zmienną przechowującą stan gry
         static StanGry stan;
 
-        //Definiujemy zmienną decydująca o trybie serializacji: true = XML + szyfrowanie, false = binarna - Piotr Bacior 15 722 - WSEI Kraków
-        static bool uzyjSerializacjiXML = false;
+        //Definiujemy zmienną decydującą o trybie serializacji: true = XML + szyfrowanie, false = binarna - Piotr Bacior 15 722 - WSEI Kraków
+        static bool uzyjSerializacjiXML = true;
 
         static void Main()
         {
+            Console.WriteLine("Witaj w grze ZaDużoZaMało (Liczby od 1 do 100)! Piotr Bacior 15 722 \n");
+
             //Ustawiamy kodowanie konsoli na UTF-8, aby obsługiwać polskie znaki
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
@@ -45,7 +47,7 @@ namespace GraZaDuzoZaMalo
                         stan.Status = StatusGry.Trwa;
 
                         //Jeśli gra była zawieszona, to przywracamy czas zawieszenia
-                        stan.StartGry = DateTime.Now; 
+                        stan.StartGry = DateTime.Now;
                     }
 
                     //Jeśli stan gry nie został wczytany (np. plik jest uszkodzony lub niekompletny), to informujemy użytkownika i rozpoczynamy nową grę
@@ -80,7 +82,7 @@ namespace GraZaDuzoZaMalo
                 stan = new StanGry
                 {
                     //Losujemy liczbę do odgadnięcia z zakresu 1-100
-                    LiczbaDoOdgadniecia = new Random().Next(1, 100)
+                    LiczbaDoOdgadniecia = new Random().Next(1, 101) // Górna granica 101, ponieważ metoda Next wyklucza ją
                 };
 
                 //Wypisujemy informację o rozpoczęciu nowej gry
@@ -93,7 +95,6 @@ namespace GraZaDuzoZaMalo
             //Teraz przechodzimy do głównej pętli gry, gdzie użytkownik będzie mógł zgadywać liczbę
             while (true)
             {
-
                 //Wypisujemy komunikat o zgadywaniu liczby dla użytkownika
                 Console.Write("Zgadnij liczbę (lub X, aby zakończyć i zapisać grę): ");
 
@@ -125,6 +126,14 @@ namespace GraZaDuzoZaMalo
                 //Sprawdzamy, czy użytkownik wprowadził poprawną liczbę
                 if (int.TryParse(input, out int propozycja))
                 {
+                    //Sprawdzamy, czy liczba znajduje się w dozwolonym zakresie od 1 do 100
+                    if (propozycja < 1 || propozycja > 100)
+                    {
+                        //Jeśli liczba jest poza zakresem, to informujemy użytkownika i pomijamy tę próbę
+                        Console.WriteLine("Liczba poza dozwolonym zakresem (1–100). Spróbuj ponownie.");
+                        continue;
+                    }
+
                     //Dodajemy propozycję do historii ruchów
                     stan.HistoriaRuchow.Add(propozycja);
 
@@ -134,9 +143,8 @@ namespace GraZaDuzoZaMalo
                     //Sprawdzamy, czy propozycja jest równa, mniejsza lub większa od liczby do odgadnięcia
                     if (propozycja == stan.LiczbaDoOdgadniecia)
                     {
-
                         //Jeśli propozycja jest równa liczbie do odgadnięcia, to informujemy użytkownika o wygranej
-                        Console.WriteLine("Brawo! Odgadłeś!");
+                        Console.WriteLine("Brawo! Odgadłeś właściwą liczbę! Ale z Ciebie gość!");
 
                         //Ustawamy status gry na Zakończona
                         stan.Status = StatusGry.Zakonczona;
@@ -155,7 +163,6 @@ namespace GraZaDuzoZaMalo
                     //Jeśli propozycja jest większa od liczby do odgadnięcia, to informujemy użytkownika, że jest za dużo
                     else
                     {
-                        //Jeśli propozycja jest większa od liczby do odgadnięcia, to informujemy użytkownika, że jest za dużo
                         Console.WriteLine("Za dużo!");
                     }
                 }
@@ -163,14 +170,13 @@ namespace GraZaDuzoZaMalo
                 //Jeśli użytkownik wprowadził niepoprawne dane (np. tekst zamiast liczby), to informujemy go o tym
                 else
                 {
-                    //Informujemy użytkownika, że wprowadził niepoprawne dane i prosi o ponowne wprowadzenie liczby
-                    Console.WriteLine("Nieprawidłowe dane. Spróbuj ponownie.");
+                    Console.WriteLine("Nieprawidłowe dane. Spróbuj ponownie liczby od 1 do 100.");
                 }
             }
 
             //Wypisujemy podsumowanie gry
             Console.WriteLine($"\nLiczba prób: {stan.LiczbaProb}");
-            Console.WriteLine("Twoje propozycje: " + string.Join(", ", stan.HistoriaRuchow));
+            Console.WriteLine("Twoje propozycje liczb: " + string.Join(", ", stan.HistoriaRuchow));
 
             //Jeśli gra została zawieszona, to informujemy o czasie zawieszenia
             var czasTrwania = DateTime.Now - stan.StartGry - stan.CzasZawieszenia;
