@@ -175,7 +175,7 @@ namespace GraZaDuzoZaMalo.Model
             Trafiony = 0,
             ZaDuzo = 1
         };
-
+        `
         public class Ruch
         {
             public int? Liczba { get; }
