@@ -12,7 +12,7 @@ namespace GraZaDuzoZaMalo
         //Definiujemy globalną zmienna przechowująca stan gry
         static StanGry stan;
 
-        //Definiujemy zmienną decydująca o trybie serializacji: true = XML + szyfrowanie, false = binarna
+        //Definiujemy zmienną decydująca o trybie serializacji: true = XML + szyfrowanie, false = binarna - Piotr Bacior 15 722 - WSEI Kraków
         static bool uzyjSerializacjiXML = false;
 
         static void Main()
