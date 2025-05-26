@@ -3,6 +3,8 @@ using GraZaDuzoZaMalo.Model;
 using GraZaDuzoZaMalo.Serializacja;
 using GraZaDuzoZaMalo.Backup;
 
+//Piotr Bacior 15 722 - WSEI Kraków
+
 namespace GraZaDuzoZaMalo
 {
     class Program

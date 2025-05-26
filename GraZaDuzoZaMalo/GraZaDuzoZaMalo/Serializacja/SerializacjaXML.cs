@@ -7,6 +7,8 @@ using System.Text;
 using System.Xml;
 using GraZaDuzoZaMalo.Model;
 
+//Piotr Bacior 15 722 - WSEI Kraków
+
 namespace GraZaDuzoZaMalo.Serializacja
 {
     //Definiujemy klasę SerializacjaXML, która będzie odpowiadać za serializację i deserializację stanu gry do pliku XML
